@@ -2,6 +2,27 @@
 <title>Cek Parkir Online</title>
 <body>
 <h1>Silahkan Masukan Kode Unik Stiker</h1>
+    <form id="frm1" action="/action_page.php">
+        Kode Stiker: <input type="text" name="fname" value="Donald"><br>
+    </form> 
+    <button onclick="myFunction()">Cek Hasil</button>
+    
+    <p id="result"></p>
+    
+    <script>
+    function myFunction() {
+        var x = document.getElementById("frm1");
+        var text = "";
+        var i;
+        for (i = 0; i < x.length ;i++) {
+        text += x.elements[i].value + "<br>";
+        }
+        document.getElementById("result").innerHTML = 
+            "Nomor Unit: " + text + "<br>"
+            + "Plat Motor: "+ "B 200 CD" + "<br>"
+            + "Plat Mobil: "+ "B 300 CD" + "<br>";
+    }
+    </script>
 
 </body>
 </html>
