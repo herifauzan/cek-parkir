@@ -1,13 +1,26 @@
 <html>
-<title>Cek Parkir Online</title>
+<head>
+    <title>Cek Parkir Online</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
 <body>
-<h1>Silahkan Masukan Kode Unik Stiker</h1>
-    <form id="frm1">
+    <div class="login-page" id="frm1">
+        <div class="form">
+            <h1>Silahkan Masukan Kode Unik Stiker</h1>
+            <form class="login-form">
+                <input type="text" placeholder="kode unik stiker"/>
+                <p id="result"></p>
+                <!-- <p class="message">Not registered? </p> -->
+            </form>
+            <button  onclick="myFunction()">Cek Hasil</button>
+        </div>
+    </div>
+  
+    <!-- <form id="frm1">
         Kode Stiker: <input type="text" name="fname" value="Donald"><br>
     </form> 
-    <button onclick="myFunction()">Cek Hasil</button>
+    <button onclick="myFunction()">Cek Hasil</button> -->
     
-    <p id="result"></p>
     
     <script>
     function myFunction() {
@@ -18,11 +31,11 @@
         text += x.elements[i].value + "<br>";
         }
         document.getElementById("result").innerHTML = 
-            "Nomor Unit: " + text + "<br>"
+            "Nomor Unit: " + "CB 12A 00" + "<br>"
             + "Plat Motor: "+ "B 200 CD" + "<br>"
             + "Plat Mobil: "+ "B 300 CD" + "<br>";
     }
     </script>
-
+   <script type="text/javascript" src="script.js"></script>
 </body>
 </html>
