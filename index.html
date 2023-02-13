@@ -8,7 +8,7 @@
         <div class="form">
             <h1>Silahkan Masukan Kode Unik Stiker</h1>
             <form class="login-form">
-                <input type="text" placeholder="kode unik stiker"/>
+                <input type="text" id="token" placeholder="kode unik stiker"/>
                 <p id="result"></p>
                 <!-- <p class="message">Not registered? </p> -->
             </form>
@@ -23,19 +23,43 @@
     
     
     <script>
-    function myFunction() {
+    async function getData() {
+        let url = 'https://script.google.com/macros/s/AKfycbxoCR-lnbf_H1VsB2DS584wxPC8ELVmRnD4Zh5WZlpvwgrWfhgIGS1aEsNh-TpYjW3aOw/exec';
+        try {
+            let res = await fetch(url);
+            return await res.json();
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    let data = [] ;
+    //let data = fetch('https://script.google.com/macros/s/AKfycbxoCR-lnbf_H1VsB2DS584wxPC8ELVmRnD4Zh5WZlpvwgrWfhgIGS1aEsNh-TpYjW3aOw/exec');
+    async function myFunction() {
+        data = await getData();
         var x = document.getElementById("frm1");
+        var token = document.getElementById("token").value;
+        var unit= "Tidak Terdaftar";
+        var platnomor = "Tidak Terdaftar";
+        var kendaraan= "Tidak Terdaftar";
         var text = "";
         var i;
+        for (i = 0; i < data.length ; i++){
+            if (token === data[i]['Random Code']){
+                unit = data[i]['Unit'];
+                platnomor = data[i]['Plat Nomor'];
+                kendaraan = data[i]['Jenis Kendaraan'];
+                break;
+            }
+        }
+
         for (i = 0; i < x.length ;i++) {
         text += x.elements[i].value + "<br>";
         }
         document.getElementById("result").innerHTML = 
-            "Nomor Unit: " + "CB 12A 00" + "<br>"
-            + "Kendaraan: "+ "Motor" + "<br>"
-            + "Plat Nomor: "+ "B 300 CD" + "<br>";
+            "Nomor Unit: " + unit + "<br>"
+            + "Plat Nomor: "+ platnomor + "<br>"
+            + "Jenis Kendaraan: "+ kendaraan + "<br>";
     }
     </script>
-   <script type="text/javascript" src="script.js"></script>
 </body>
 </html>
